@@ -51,7 +51,7 @@ const PieChart = ({ pieData, setIsPieChart, isPieChart }) => {
     return (
         <Flex flexDirection={'row-reverse'}
             w={'80vw'}
-            h={'80vh'}
+            h={{base:'65vh' , md:"80vh"}}
             position={'absolute'}
             display={isPieChart ? 'flex' : 'none'}
             top={'12vh'}

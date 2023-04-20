@@ -66,8 +66,8 @@ const Home = () => {
                 bg={"RGB(122 107 176)"}
                 color={'white'}
                 position={'fixed'}
-                bottom={'20px'}
-                right={'20px'}
+                bottom={{base:'20px',md:"30px"}}
+                right={{base:'20px',md:"50px"}}
                   onClick={() => {
                     setIsPieChart(true)
                   }}

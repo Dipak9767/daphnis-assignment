@@ -10,19 +10,19 @@ const ProductCard = ({ product }) => {
     };
 
     return (
-        <Card maxW='sm' width={'400px'} height={!isExpanded?'550px':'auto'} border={'1px solid #e1e2f7'}>
+        <Card maxW='sm' width={'400px'} height={{base:!isExpanded?'380px':'auto' , md:!isExpanded?'500px':'auto'}} border={'2px solid #e1e2f7'}>
             <CardBody display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
                 <Image
                     src={product.image}
                     alt='Green double couch with wooden legs'
                     borderRadius='lg'
-                    width={{ base: '150px' }}
-                    height={{ base: '200px' }}
+                    width={{ base: '100px', md:'150px' }}
+                    height={{ base: '150px' , md:'200px'}}
                     objectFit={'contain'}
                 />
                 <Stack mt='6' spacing='2'>
-                    <Heading size='md'noOfLines={1} >{product.title}</Heading>
-                    <Text fontSize={'15px'}>
+                    <Heading size='md'noOfLines={1} fontSize={{ base: '15px', md:'20px' }}>{product.title}</Heading>
+                    <Text fontSize={{ base: '10px', md:'15px' }} >
                         {isExpanded ? (product.description) : (product.description).slice(0, 150)}
                         {product.description.length > 150 && !isExpanded && (
                             <Text as="span" color="blue" cursor="pointer" onClick={handleToggle}>
@@ -36,18 +36,18 @@ const ProductCard = ({ product }) => {
                         )}
                         
                     </Text>
-                    <Text color='blue.600' fontSize='2xl'>
+                    <Text color='blue.600'fontSize={{ base: '15px', md:'20px' }} >
                         ${product.price}
                     </Text>
                 </Stack>
             </CardBody>
             
             <CardFooter marginTop={'-20px'}>
-                <ButtonGroup spacing='10'>
-                    <Button variant='solid' colorScheme='blue'>
+                <ButtonGroup spacing='10' display={'flex'} alignItems={'center'}>
+                    <Button variant='solid' colorScheme='blue'fontSize={{ base: '15px', md:'20px' }}>
                         Buy now
                     </Button>
-                    <Text fontSize={'20px'}>{product.category}</Text>
+                    <Text  fontSize={{ base: '15px', md:'20px' }} >{product.category}</Text>
                 </ButtonGroup>
             </CardFooter>
         </Card>
