@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 
 const ProductCard = ({ product }) => {
 
+    // to expand the description made state
     const [isExpanded, setIsExpanded] = useState(false);
 
     const handleToggle = () => {
@@ -23,12 +24,15 @@ const ProductCard = ({ product }) => {
                 <Stack mt='6' spacing='2'>
                     <Heading size='md'noOfLines={1} fontSize={{ base: '15px', md:'20px' }}>{product.title}</Heading>
                     <Text fontSize={{ base: '10px', md:'15px' }} >
+
                         {isExpanded ? (product.description) : (product.description).slice(0, 150)}
+
                         {product.description.length > 150 && !isExpanded && (
                             <Text as="span" color="blue" cursor="pointer" onClick={handleToggle}>
                                 ...Read More
                             </Text>
                         )}
+                        
                         {isExpanded && (
                             <Text as="span" color="blue.500" cursor="pointer" onClick={handleToggle}>
                                 ...Show Less

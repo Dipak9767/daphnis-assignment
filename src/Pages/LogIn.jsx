@@ -16,14 +16,20 @@ const LogIn = () => {
     const navigate = useNavigate();
     const { toastMessage } = ToastMessage()
 
+    // log in handler
     const logInHandler = (e) => {
         e.preventDefault();
+
+        // checking input should be valid 
         if(user.name === '' ||  user.email === ''){
             toastMessage({ status: 400, message: "Missing credentials" })
             return
         }
-        const userbio = { isAuth: true, userInfo: user }
-        localStorage.setItem('daphnisUser', JSON.stringify(userbio))
+
+    
+        const userbio = { isAuth: true, userInfo: user } // creating an userinfo
+        localStorage.setItem('daphnisUser', JSON.stringify(userbio)) // storing info in localstorage
+        
         dispatch({
             type: logInUser,
             payload: userbio

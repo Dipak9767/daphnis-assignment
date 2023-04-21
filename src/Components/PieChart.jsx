@@ -7,6 +7,7 @@ import {  Flex, Text } from '@chakra-ui/react';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = ({ pieData, setIsPieChart, isPieChart }) => {
+
     const [pieChartData, setPieChartData] = useState({})
 
     const data = {
@@ -42,8 +43,8 @@ const PieChart = ({ pieData, setIsPieChart, isPieChart }) => {
     }, [pieData])
 
     const options = {
-        responsive: true, // Make the chart responsive
-        maintainAspectRatio: false, // Do not maintain aspect ratio
+        responsive: true, 
+        maintainAspectRatio: false, 
         width: 400, // Set width in pixels
         height: 400 // Set height in pixels
     };
@@ -60,6 +61,7 @@ const PieChart = ({ pieData, setIsPieChart, isPieChart }) => {
             border={'2px solid RGB(122 107 176)'}
             borderRadius={'10px'}
             p={6}>
+                
             <Text fontSize={'30px'}
                 fontWeight={'bold'}
                 mt={'-20px'}

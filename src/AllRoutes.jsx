@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 
 const AllRoutes = () => {
     const user = useSelector((state) => state.user);
-    
+
     const NavBarHOC = () => {
         return (
             <>
@@ -16,6 +16,7 @@ const AllRoutes = () => {
         )
     }
 
+    // for protected routes 
     const IsAuth = () => {
         if (user.isAuth) {
             return (

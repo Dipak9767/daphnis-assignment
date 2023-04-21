@@ -5,13 +5,15 @@ import { Box, Button, Flex, Spinner } from '@chakra-ui/react';
 import PieChart from '../Components/PieChart';
 
 const Home = () => {
-  const [allProducts, setAllProducts] = useState([]);
-  const [categories, setCategories] = useState([])
-  const [loader, setLoader] = useState(true)
-  const [pieData, setPieData] = useState({})
-  const [isPieChart, setIsPieChart] = useState(false)
+  
+  const [allProducts, setAllProducts] = useState([]); // for all products
+  const [categories, setCategories] = useState([]) // for categories
+  const [loader, setLoader] = useState(true) // for loading
+  const [pieData, setPieData] = useState({}) // for categories data to set in pie chart
+  const [isPieChart, setIsPieChart] = useState(false) // for conditional rendering of pie chart and analysis button
 
 
+  // Calculating category data for chart
   const calculateCategories = ({ prods }) => {
 
     let categoryData = {}
@@ -26,6 +28,7 @@ const Home = () => {
     setPieData(categoryData)
   }
 
+  // fetching products and categories
   const fetchProducts = async () => {
     try {
       const productResponse = await axios.get('https://fakestoreapi.com/products');
@@ -41,6 +44,7 @@ const Home = () => {
       console.log(error)
     }
   }
+
   useEffect(() => {
     fetchProducts()
   }, [])
@@ -61,6 +65,7 @@ const Home = () => {
           : <>
             <ProductContainer allProducts={allProducts} categories={categories} />
             {
+              // conditional rendering for Analysis button
               !isPieChart ?
                 <Button
                 bg={"RGB(122 107 176)"}

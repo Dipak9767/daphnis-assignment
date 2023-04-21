@@ -6,6 +6,7 @@ import ProductCard from './ProductCard'
 const ProductContainer = ({ allProducts, categories }) => {
     const [products, setProducts] = useState([]);
 
+    // filtering products on category 
     const filterHandler = (e) => {
         const val = (e.target.value).toLowerCase()
         if (val === 'all') {
@@ -16,6 +17,7 @@ const ProductContainer = ({ allProducts, categories }) => {
         }
     }
 
+    // filtering products on search
     const searchHandler = (e) => {
         const val = (e.target.value).toLowerCase()
         if (val === '') {

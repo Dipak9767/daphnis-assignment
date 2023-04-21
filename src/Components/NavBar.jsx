@@ -18,15 +18,23 @@ import { logOutUser } from '../Redux/Actions';
 import { ToastMessage } from '../Utils/ToastMessage';
 
 const NavBar = () => {
+    // For Responsive design
     const { isOpen, onOpen, onClose } = useDisclosure();
     const dispatch = useDispatch();
+
+    // Toast Meggase 
     const { toastMessage } = ToastMessage()
+
+    // User Details
     const user = useSelector((state) => state.user)
 
+    // Log Out Handler 
     const logOuthandler = () => {
+
         dispatch({ type: logOutUser })
         localStorage.setItem('daphnisUser',JSON.stringify( { isAuth: false, userInfo: {} }))
         toastMessage({ status: 200, message: "log out success" })
+
     }
 
 
@@ -56,6 +64,8 @@ const NavBar = () => {
                     <Flex alignItems={'center'}>
                         <Menu>
                             {
+
+                                // Conditional rendering for log in and log out button
                                 user.isAuth ?
                                     <Button
                                         bg={'#7A6BB0'}
@@ -90,8 +100,9 @@ const NavBar = () => {
                         </Menu>
                     </Flex>
                 </Flex>
-
-                {isOpen ? (
+                {
+                    // responsive code
+                isOpen ? (
                     <Box pb={4} display={{ md: 'none' }}>
                         <Stack as={'nav'} spacing={4}>
                             <Text fontWeight={'bold'}>Name : {user.userInfo.name}</Text>
